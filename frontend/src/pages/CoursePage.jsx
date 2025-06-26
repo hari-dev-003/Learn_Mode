@@ -1,15 +1,21 @@
 import SideBarCourse from '../components/SideBarCourse'; 
-
+import Card from '../components/Card';
 
 function CoursePage() { 
    return (
     <> 
-      <div className="grid grid-cols-[25%_70%] h-screen">
+      <div className="grid grid-cols-[23%_75%] h-screen">
         <SideBarCourse />
-        <div className="flex-1 p-4 border-l border-gray-200">
-            {/* Main content area */}
+        <div className="flex-1 p-4 w-full border-l  border-gray-200">
             <h2 className="text-2xl font-bold mb-4">Course Content</h2>
             <p>This is where the course content will be displayed.</p>
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+            <Card title="Course Title" description="This is a brief description of the course." />
+            <Card title="Module 1" description="Introduction to the course and its objectives." />
+            <Card title="Module 2" description="Deep dive into the first topic of the course." />
+            <Card title="Module 3" description="Exploring advanced concepts and techniques." />
+            <Card title="Module 4" description="Hands-on exercises and practical applications." />
+            </div>
         </div>
       </div>
     </>
