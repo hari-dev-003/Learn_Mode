@@ -13,9 +13,8 @@ function App() {
     <Route path="/" element={<HomePage/>}/>
     <Route path="/login" element={<LoginPage/>}/>
     <Route path="/register" element={<RegisterPage/>}/>
-    <Route path="/courses" element={<CoursePage/>}>
-      <Route path=":courseName" element={<VideoPage/>}/>
-    </Route>
+    <Route path="/courses" element={<CoursePage/>}/>
+    <Route path="/videos" element={<VideoPage/>}/>
     </Routes>
     </>
   )
