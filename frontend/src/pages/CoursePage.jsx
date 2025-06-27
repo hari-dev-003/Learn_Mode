@@ -1,6 +1,11 @@
 import SideBarCourse from '../components/SideBarCourse'; 
 import Card from '../components/Card';
+import Popup from '../components/Popup';
 
+function handlePopup() { 
+  console.log("Popup opened");
+  return true;
+}
 function CoursePage() { 
    return (
     <> 
@@ -9,7 +14,7 @@ function CoursePage() {
         <div className="flex-1 p-4 w-full border-l  border-gray-200">
           <div className="max-w-4xl flex flex-row justify-between m-auto">
             <h2 className="text-2xl font-bold mb-2 mt-2">Course Content</h2>
-            <button className="mt-1 mb-1 px-4 py-1 bg-blue-500 text-white rounded-full  hover:bg-blue-600">
+            <button className="mt-1 mb-1 px-4 py-1 bg-blue-500 text-white rounded-full  hover:bg-blue-600" onClick={handlePopup}>
               Add Course
             </button>
           </div>
@@ -18,6 +23,7 @@ function CoursePage() {
             <Card title="Module 1" description="Introduction to the course and its objectives." />
             <Card title="Module 2" description="Deep dive into the first topic of the course." />
            </div>
+           {handlePopup() && <Popup />}
         </div>
       </div>
     </>
