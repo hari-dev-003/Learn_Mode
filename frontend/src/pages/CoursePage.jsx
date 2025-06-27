@@ -7,15 +7,17 @@ function CoursePage() {
       <div className="grid grid-cols-[23%_75%] h-screen">
         <SideBarCourse />
         <div className="flex-1 p-4 w-full border-l  border-gray-200">
-            <h2 className="text-2xl font-bold mb-4">Course Content</h2>
-            <p>This is where the course content will be displayed.</p>
+          <div className="max-w-4xl flex flex-row justify-between m-auto">
+            <h2 className="text-2xl font-bold mb-2 mt-2">Course Content</h2>
+            <button className="mt-1 mb-1 px-4 py-1 bg-blue-500 text-white rounded-full  hover:bg-blue-600">
+              Add Course
+            </button>
+          </div>
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
             <Card title="Course Title" description="This is a brief description of the course." />
             <Card title="Module 1" description="Introduction to the course and its objectives." />
             <Card title="Module 2" description="Deep dive into the first topic of the course." />
-            <Card title="Module 3" description="Exploring advanced concepts and techniques." />
-            <Card title="Module 4" description="Hands-on exercises and practical applications." />
-            </div>
+           </div>
         </div>
       </div>
     </>
