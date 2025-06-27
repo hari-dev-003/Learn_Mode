@@ -8,14 +8,14 @@ function handlePopup() {
   return false;
 }
 
-function CoursePage() { 
+function CoursePage() {
    return (
     <> 
       <div className="grid grid-cols-[23%_75%] h-screen">
-        <SideBarCourse />
+        <SideBarCourse title="Course Content" />
         <div className="flex-1 p-4 w-full border-l  border-gray-200">
           <div className="max-w-4xl flex flex-row justify-between m-auto">
-            <h2 className="text-2xl font-bold mb-2 mt-2">Course Content</h2>
+            <h2 className="text-2xl font-bold mb-2 mt-2">Courses</h2>
             <button className="mt-1 mb-1 px-4 py-1 bg-blue-500 text-white rounded-full  hover:bg-blue-600" onClick={handlePopup}>
               Add Course
             </button>
