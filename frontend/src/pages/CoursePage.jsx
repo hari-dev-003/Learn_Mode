@@ -2,10 +2,12 @@ import SideBarCourse from '../components/SideBarCourse';
 import Card from '../components/Card';
 import Popup from '../components/Popup';
 
+// TODO: Setting state and handling the popup visibility remains to be implemented.
 function handlePopup() { 
   console.log("Popup opened");
-  return true;
+  return false;
 }
+
 function CoursePage() { 
    return (
     <> 
