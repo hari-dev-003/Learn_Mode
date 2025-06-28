@@ -17,8 +17,8 @@ function VideoPage(){
     </div>
     <div className="w-full  p-4 bg-white">
       <VideoSection courseName={courseName} />
-      <div className="mt-4">
-        <h2 className="text-xl font-semibold mb-2">Course Description</h2>
+      <div className="mt-4 p-4 bg-gray-100 rounded-lg">
+        <h2 className="text-xl font-semibold mb-2">{courseName}</h2>
         <p className="text-gray-700">
           This course covers the fundamentals of {courseName}. You will learn about the key concepts and practical applications.
         </p>
