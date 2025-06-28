@@ -1,4 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
+import SideBarCourse from '../components/SideBarCourse';
+import VideoSection from '../components/VideoSection';
 
 function VideoPage(){
    const [searchParams] = useSearchParams();
@@ -6,23 +8,24 @@ function VideoPage(){
    const courseName = searchParams.get('name');
    console.log(courseName);
 
-    if (!courseName) {
-        return (
-            <div className="flex flex-col items-center justify-items-normal h-full">
-                <h1 className="text-2xl font-bold mb-4 pt-4">Video Page</h1>
-                <p className="text-lg mb-4">No course selected.</p>
-            </div>
-        );
-    }
+
    return(
-    <>
-      <div className="flex flex-col items-center justify-items-normal h-full">
-        <h1 className="text-2xl font-bold mb-4 pt-4">Video Page</h1>
-        <p className="text-lg mb-4">This is the video page for a specific course.</p>
-        <p className="text-md">You can add your video player component here.</p>
-        <p className="text-md mt-2">Course Name: {courseName}</p>
-      </div>
-    </>
+  <>
+  <div className="flex flex-col md:flex-row w-full min-h-screen">
+    <div className="w-full md:w-1/4 p-4 bg-gray-50 md:border-r border-gray-200">
+      <SideBarCourse title={courseName} />
+    </div>
+    <div className="w-full  p-4 bg-white">
+      <VideoSection courseName={courseName} />
+      <div className="mt-4">
+        <h2 className="text-xl font-semibold mb-2">Course Description</h2>
+        <p className="text-gray-700">
+          This course covers the fundamentals of {courseName}. You will learn about the key concepts and practical applications.
+        </p>
+      </div>  
+    </div>
+  </div>
+</>
    )
 }
  
