@@ -1,35 +1,84 @@
-import SideBarCourse from '../components/SideBarCourse'; 
+import SideBarCourse from '../components/SideBarCourse';
 import Card from '../components/Card';
 import Popup from '../components/Popup';
-
-// TODO: Setting state and handling the popup visibility remains to be implemented.
-function handlePopup() { 
-  console.log("Popup opened");
-  return false;
-}
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { FaBars } from 'react-icons/fa';
 
 function CoursePage() {
-   return (
-    <> 
-      <div className="grid grid-cols-[23%_75%] h-screen">
-        <SideBarCourse title="Course Content" />
-        <div className="flex-1 p-4 w-full border-l  border-gray-200">
-          <div className="max-w-4xl flex flex-row justify-between m-auto">
-            <h2 className="text-2xl font-bold mb-2 mt-2">Courses</h2>
-            <button className="mt-1 mb-1 px-4 py-1 bg-blue-500 text-white rounded-full  hover:bg-blue-600" onClick={handlePopup}>
-              Add Course
-            </button>
-          </div>
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-            <Card title="Course Title" description="This is a brief description of the course." />
-            <Card title="Module 1" description="Introduction to the course and its objectives." />
-            <Card title="Module 2" description="Deep dive into the first topic of the course." />
-           </div>
-           {handlePopup() && <Popup />}
-        </div>
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  function handlePopup() {
+    // Basic popup handling, can be expanded
+    return false;
+  }
+
+  return (
+    <div className="flex h-screen bg-gray-100 dark:bg-gray-950">
+      {/* Sidebar for larger screens */}
+      <div className="hidden lg:block lg:w-64 lg:flex-shrink-0">
+        <SideBarCourse title="Courses" />
       </div>
-    </>
-   )
+
+      {/* Mobile Sidebar (Drawer) */}
+      <div
+        className={`fixed inset-0 z-40 transform transition-transform duration-300 lg:hidden ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="relative h-full w-64 bg-white p-4 shadow-lg dark:bg-gray-900">
+          <SideBarCourse title="Courses" />
+        </div>
+        <div
+          className="absolute inset-0 bg-black/30"
+          onClick={() => setIsSidebarOpen(false)}></div>
+      </div>
+
+      {/* Main Content */}
+      <main className="flex-1 overflow-y-auto">
+        <div className="p-4 sm:p-6 md:p-8">
+          <div className="mx-auto max-w-7xl">
+            {/* Header */}
+            <div className="flex items-center justify-between rounded-2xl bg-white p-4 shadow-md dark:bg-gray-900/70">
+              <button
+                className="text-gray-700 dark:text-gray-300 lg:hidden"
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+                <FaBars className="h-6 w-6" />
+              </button>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+                Available Courses
+              </h1>
+              <button
+                className="rounded-full bg-blue-600 px-4 py-2 font-semibold text-white shadow-md transition-transform duration-200 hover:scale-105 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+                onClick={handlePopup}>
+                Add Course
+              </button>
+            </div>
+
+            {/* Course Grid */}
+            <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              <Link to="/videos?name=Web%20Development">
+                <Card
+                  title="Web Development"
+                  description="Master the art of building modern websites and applications."
+                />
+              </Link>
+              <Link to="/videos?name=Computer%20Networks">
+                <Card
+                  title="Computer Networks"
+                  description="Understand the protocols and architecture of the internet."
+                />
+              </Link>
+              <Link to="/videos?name=DataBase">
+                <Card
+                  title="Database Systems"
+                  description="Learn to manage and query data with SQL and NoSQL databases."
+                />
+              </Link>
+            </div>
+          </div>
+        </div>
+        {handlePopup() && <Popup />}
+      </main>
+    </div>
+  );
 }
 
 export default CoursePage;
