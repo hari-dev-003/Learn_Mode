@@ -5,11 +5,10 @@ function VideoSection() {
   <div className="relative w-full max-w-2xl aspect-video">
     <iframe
       className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg border border-gray-300 mx-w-full mx-h-full p-5"
-      src="https://www.youtube-nocookie.com/embed/KUO2s4Ib4zM?si=s8m0zw2Ul6UXotcdQ"
+      src="https://www.youtube.com/embed/kUMe1FH4CHE?si=HsWGhdUik3fEAxWm"
       title="YouTube video player"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       referrerPolicy="strict-origin-when-cross-origin"
-      allowFullScreen
     />
   </div>
 </div>
