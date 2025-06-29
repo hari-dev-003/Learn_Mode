@@ -1,10 +1,17 @@
-import { Link,useNavigate } from 'react-router-dom';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { data } from '../data';
 
 function VideoSideBar() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const courseName = searchParams.get('name');
+
+  const course = data.find(course => { 
+    return course.name === courseName});
+
+  if (!course) {
+    return <div className="text-white">Course not found</div>;
+  }
 
   return (
     <div className="flex h-full flex-col p-4 bg-gray-50 dark:bg-gray-900">
@@ -20,25 +27,20 @@ function VideoSideBar() {
         <h1 className="truncate text-xl font-bold text-gray-800 dark:text-white">{courseName}</h1>
       </div>
       <ul className="w-full list-none space-y-2 p-0 m-0">
-        <li>
-          <Link to={`/videos?name=${courseName}&id=1`} className="block rounded-lg px-4 py-3 text-center font-medium text-gray-700 transition-all duration-200 hover:bg-blue-100 hover:text-blue-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-blue-400">
-            HTML
-          </Link>
-        </li>
-        <li>
-          <Link to={`/videos?name=${courseName}&id=2`} className="block rounded-lg px-4 py-3 text-center font-medium text-gray-700 transition-all duration-200 hover:bg-blue-100 hover:text-blue-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-blue-400">
-            CSS
-          </Link>
-        </li>
-        <li>
-          <Link to={`/videos?name=${courseName}&id=3`} className="block rounded-lg px-4 py-3 text-center font-medium text-gray-700 transition-all duration-200 hover:bg-blue-100 hover:text-blue-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-blue-400">
-            JavaScript
-          </Link>
-        </li>
+        {course.courses.map((video)=>{ 
+           return(
+            <li key={video.id} className="flex items-center justify-between p-2 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-md transition-shadow">
+              <div className="flex flex-col">
+                <Link to={`/videos?name=${course.name}&id=${video.id}`} className="text-gray-900 dark:text-white font-semibold hover:underline">{video.title}</Link>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">{video.description}</p>
+              </div>
+            </li>
+           )
+        })} 
       </ul>
     </div>
   );
 }
 
-
 export default VideoSideBar;
+
