@@ -7,12 +7,14 @@ import { FaBars } from 'react-icons/fa';
 
 function CoursePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  function handlePopup() {
-    // Basic popup handling, can be expanded
-    return false;
-  }
-
+  const handlePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
   return (
     <div className="flex h-screen bg-gray-100 dark:bg-gray-950">
       {/* Sidebar for larger screens */}
@@ -47,7 +49,7 @@ function CoursePage() {
               </h1>
               <button
                 className="rounded-full bg-blue-600 px-4 py-2 font-semibold text-white shadow-md transition-transform duration-200 hover:scale-105 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
-                onClick={handlePopup}>
+                onClick={() => handlePopup()}>
                 Add Course
               </button>
             </div>
@@ -75,7 +77,7 @@ function CoursePage() {
             </div>
           </div>
         </div>
-        {handlePopup() && <Popup />}
+        {isPopupOpen && <Popup onClose={handleClosePopup} />}
       </main>
     </div>
   );
