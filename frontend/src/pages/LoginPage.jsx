@@ -1,6 +1,7 @@
 import Login from '../components/Login';
 import { FaBook } from 'react-icons/fa';
 
+
 function LoginPage() {
   // Enhanced: More attractive, animated, and modern look
   return (
@@ -18,7 +19,7 @@ function LoginPage() {
         <Login />
         <div className="mt-8 text-center">
           <span className="text-gray-500">Don't have an account?</span>
-          <a href="#" className="ml-2 font-semibold text-blue-600 transition-colors duration-200 hover:underline">Sign Up</a>
+          <a href="/register" className="ml-2 font-semibold text-blue-600 transition-colors duration-200 hover:underline">Sign Up</a>
         </div>
       </div>
     </div>

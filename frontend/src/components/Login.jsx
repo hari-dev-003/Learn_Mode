@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom';
+
 function Login() {
+  const navigate = useNavigate();
+
   return (
     <div className="relative w-full max-w-md">
       <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-fit rounded-full bg-blue-100 p-3 shadow-md z-10">
@@ -26,8 +30,7 @@ function Login() {
         </div>
         <button
           type="submit"
-          className="mb-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 py-3 text-lg font-bold text-white shadow-md transition-all duration-300 hover:from-blue-600 hover:to-purple-600 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
-        >
+          className="mb-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 py-3 text-lg font-bold text-white shadow-md transition-all duration-300 hover:from-blue-600 hover:to-purple-600 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300" >
           Login
         </button>
         <a href="#" className="mt-2 text-center text-sm text-blue-500 hover:underline">Forgot password?</a>
