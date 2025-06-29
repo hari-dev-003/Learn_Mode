@@ -7,35 +7,31 @@ function VideoSideBar() {
   const courseName = searchParams.get('name');
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="flex items-center justify-items-normal p-2 bg-gray-50 border-b border-gray-200">
-      <button className="mx-4" onClick={()=>{ 
-          navigate("/courses", { replace: true})
-      }}>Back</button>
-      <h1 className="text-2xl font-bold mb-4 pt-4 text-center">{courseName}</h1>
+    <div className="flex h-full flex-col p-4 bg-gray-50 dark:bg-gray-900">
+      <div className="mb-4 flex items-center border-b border-gray-200 pb-4 dark:border-gray-700">
+        <button
+          className="mr-4 rounded-full p-2 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700"
+          onClick={() => {
+            navigate("/courses", { replace: true });
+          }}
+        >
+          <svg className="h-6 w-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <h1 className="truncate text-xl font-bold text-gray-800 dark:text-white">{courseName}</h1>
       </div>
-      <ul className="list-none p-0 m-0 border-t border-gray-200 w-full">
-        <li className="m-4 mb-2 text-center">
-          <Link
-            to={`/videos?name=${courseName}&id=1`}
-            className="text-blue-500 hover:underline"
-          >
+      <ul className="w-full list-none space-y-2 p-0 m-0">
+        <li>
+          <Link to={`/videos?name=${courseName}&id=1`} className="block rounded-lg px-4 py-3 text-center font-medium text-gray-700 transition-all duration-200 hover:bg-blue-100 hover:text-blue-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-blue-400">
             HTML
           </Link>
         </li>
-        <li className="m-4 mb-2 text-center">
-          <Link
-            to={`/videos?name=${courseName}&id=2`}
-            className="text-blue-500 hover:underline"
-          >
+        <li>
+          <Link to={`/videos?name=${courseName}&id=2`} className="block rounded-lg px-4 py-3 text-center font-medium text-gray-700 transition-all duration-200 hover:bg-blue-100 hover:text-blue-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-blue-400">
             CSS
           </Link>
         </li>
-        <li className="m-4 mb-2 text-center">
-          <Link
-            to={`/videos?name=${courseName}&id=3`}
-            className="text-blue-500 hover:underline"
-          >
+        <li>
+          <Link to={`/videos?name=${courseName}&id=3`} className="block rounded-lg px-4 py-3 text-center font-medium text-gray-700 transition-all duration-200 hover:bg-blue-100 hover:text-blue-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-blue-400">
             JavaScript
           </Link>
         </li>
