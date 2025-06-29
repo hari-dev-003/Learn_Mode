@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
-import { FaHome, FaInfoCircle, FaEnvelope, FaBook } from 'react-icons/fa';
+import { FaHome,  FaBook } from 'react-icons/fa';
 
 function Navbar() {
   const navItems = [
     { name: 'Home', path: '/', icon: <FaHome /> },
-    { name: 'About', path: '/about', icon: <FaInfoCircle /> },
-    { name: 'Contact', path: '/contact', icon: <FaEnvelope /> },
     { name: 'Courses', path: '/courses', icon: <FaBook /> },
   ];
 
