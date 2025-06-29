@@ -2,6 +2,7 @@ const data =[
    {
      courseId: 1,
      name: "Web Development",
+     description: "Learn the fundamentals of web development, including HTML, CSS, and JavaScript.",
      courses: [
        {
          id: 1,
@@ -26,6 +27,7 @@ const data =[
   { 
     courseId: 2,
     name:"dsa",
+    description: "Explore the world of Data Structures and Algorithms, essential for efficient programming.",
     courses:[
       {
         id: 1,
@@ -50,6 +52,7 @@ const data =[
   {
     courseId: 3,
     name:"Computer Networks",
+    description: "Understand the principles of computer networks, including protocols and security.",
     courses:[
       {
         id: 1,
@@ -60,7 +63,7 @@ const data =[
       {
         id: 2,
         title: "TCP/IP Protocol Suite",
-        src: "https://www.youtube.com/embed/5j6k7l8m9n0o?si=6ya2XZ8tfTn-4n7r",
+        src:"https://www.youtube.com/embed/3b_TAYtzuho?si=WCnzmsS6bKNPZrdS" ,
         description: "Discover the TCP/IP protocol suite and its role in network communication."
       },
       {
@@ -74,6 +77,7 @@ const data =[
   {
     courseId: 4,
     name:"DataBase",
+    description: "Learn about databases, including SQL and NoSQL technologies.",
     courses:[
       {
         id: 1,
@@ -84,13 +88,13 @@ const data =[
       {
         id: 2,
         title: "SQL for Beginners",
-        src: "https://www.youtube.com/embed/8m9n0o1p2q3r?si=6ya2XZ8tfTn-4n7r",
+        src: "https://www.youtube.com/embed/-fW2X7fh7Yg?si=VKP_6TTO0UfAqwDL",
         description: "Discover how to use SQL to manage and query databases effectively."
       },
       {
         id: 3,
         title: "NoSQL Databases Overview",
-        src: "https://www.youtube.com/embed/9n0o1p2q3r4s?si=lToky4tDR_OwnROR",
+        src: "https://www.youtube.com/embed/xh4gy1lbL2k?si=CGqFVxgS8CrkdKaT",
         description: "Get an overview of NoSQL databases and their use cases."
       }
     ]

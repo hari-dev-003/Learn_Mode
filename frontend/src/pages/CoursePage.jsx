@@ -4,6 +4,7 @@ import Popup from '../components/Popup';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
+import { data } from '../data'
 
 function CoursePage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -56,26 +57,16 @@ function CoursePage() {
 
             {/* Course Grid */}
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-              <Link to="/videos?name=Web%20Development">
-                <Card
-                  title="Web Development"
-                  description="Master the art of building modern websites and applications."
-                />
-              </Link>
-              <Link to="/videos?name=Computer%20Networks">
-                <Card
-                  title="Computer Networks"
-                  description="Understand the protocols and architecture of the internet."
-                />
-              </Link>
-              <Link to="/videos?name=DataBase">
-                <Card
-                  title="Database Systems"
-                  description="Learn to manage and query data with SQL and NoSQL databases."
-                />
-              </Link>
-            </div>
+              {data.map((course) => (
+                <Link to={`/videos?name=${course.name}`} key={course.id}>
+                  <Card
+                    title={course.name}
+                    description={course.description}
+                  />
+                </Link>
+              ))}
           </div>
+        </div>
         </div>
         {isPopupOpen && <Popup onClose={handleClosePopup} />}
       </main>
