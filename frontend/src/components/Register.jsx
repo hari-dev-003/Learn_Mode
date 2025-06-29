@@ -39,7 +39,7 @@ function Register() {
         >
           Register
         </button>
-        <a href="#" className="mt-2 text-center text-sm text-purple-500 hover:underline">Already have an account?</a>
+       
       </form>
     </div>
   );
