@@ -35,8 +35,8 @@ function VideoPage() {
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto lg:ml-[22%] md:pt-16">
-        <div className="p-4 sm:p-6 md:p-8">
+      <main className="flex-1 overflow-y-auto lg:ml-[22%] md:pt-3">
+        <div className="p-4 sm:p-6 md:p-5">
           <div className="mx-auto max-w-5xl">
             <div className="flex items-center justify-between rounded-2xl bg-white p-4 shadow-md dark:bg-gray-900/70 mb-4">
               <button
