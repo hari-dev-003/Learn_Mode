@@ -27,12 +27,11 @@ function VideoSideBar() {
         <h1 className="truncate text-xl font-bold text-gray-800 dark:text-white">{courseName}</h1>
       </div>
       <ul className="w-full list-none space-y-2 p-0 m-0">
-        {course.courses.map((video)=>{ 
+        {course.videos.map((video)=>{ 
            return(
             <li key={video.id} className="flex items-center justify-between p-2 bg-white dark:bg-gray-800 rounded-lg shadow hover:shadow-md transition-shadow">
               <div className="flex flex-col">
                 <Link to={`/videos?name=${course.name}&id=${video.id}`} className="text-gray-900 dark:text-white font-semibold hover:underline">{video.title}</Link>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">{video.description}</p>
               </div>
             </li>
            )

@@ -1,7 +1,7 @@
 
 
-function VideoSection({ src }) {
-
+function VideoSection({ srcId }) {
+  const embedUrl = `https://www.youtube.com/embed/${srcId}`;
 
   return (
     <div className="mx-auto w-full max-w-4xl rounded-2xl bg-white p-6 shadow-lg dark:bg-gray-800">
@@ -9,7 +9,7 @@ function VideoSection({ src }) {
       <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-gray-200 shadow-inner dark:border-gray-700">
         <iframe
           className="absolute top-0 left-0 h-full w-full"
-          src={src}
+          src={embedUrl}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           referrerPolicy="strict-origin-when-cross-origin"
