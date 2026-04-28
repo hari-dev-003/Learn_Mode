@@ -16,11 +16,15 @@ const getTranscript = async (req, res) => {
     return res.status(200).json({ transcript });
   } catch (error) {
     console.error('Error fetching transcript:', error);
-    const message =
-      error.message?.includes('Could not get transcript') ||
-      error.message?.includes('Transcript is disabled')
-        ? 'Transcript is not available for this video.'
-        : 'Failed to fetch transcript.';
+    const isUnavailable =
+      error?.message?.toLowerCase().includes('transcript') ||
+      error?.message?.toLowerCase().includes('disabled') ||
+      error?.message?.toLowerCase().includes('no captions') ||
+      error?.name === 'YoutubeTranscriptNotAvailableError' ||
+      error?.name === 'YoutubeTranscriptDisabledError';
+    const message = isUnavailable
+      ? 'Transcript is not available for this video.'
+      : 'Failed to fetch transcript.';
     return res.status(500).json({ message });
   }
 };
@@ -41,10 +45,14 @@ const askQuestion = async (req, res) => {
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
+    // Gemini 1.5 Flash has a ~1M token context window; 30 000 characters
+    // (~7 500 tokens) keeps prompts well within limits while covering most
+    // video transcripts without truncation.
+    const MAX_TRANSCRIPT_CHARS = 30000;
     const transcriptText = transcript
       .map(item => item.text)
       .join(' ')
-      .slice(0, 30000);
+      .slice(0, MAX_TRANSCRIPT_CHARS);
 
     const prompt = `You are a helpful tutor assistant for an online learning platform called "Learn Mode".
 A student is watching a video titled: "${videoTitle || 'Unknown Video'}".

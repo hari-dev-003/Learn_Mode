@@ -6,7 +6,7 @@ function VideoQA({ transcript, videoTitle }) {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      text: `Hi! I've analysed this video${videoTitle ? ` on "${videoTitle}"` : ''}. Ask me anything about it!`,
+      text: `Hi! I've analyzed this video${videoTitle ? ` on "${videoTitle}"` : ''}. Ask me anything about it!`,
     },
   ]);
   const [input, setInput] = useState('');
