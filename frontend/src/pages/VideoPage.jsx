@@ -7,12 +7,15 @@ import VideoSection from '../components/VideoSection';
 import VideoSideBar from '../components/VideoSideBar';
 import CourseIntroduction from '../components/CourseIntroduction';
 import VideoDetails from '../components/VideoDetails';
+import TranscriptPanel from '../components/TranscriptPanel';
+import VideoQA from '../components/VideoQA';
 
 function VideoPage() {
   const [searchParams] = useSearchParams();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentVideoData, setCurrentVideoData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [transcript, setTranscript] = useState([]);
 
   const courseName = searchParams.get('name') || 'Course';
   const videoId = searchParams.get('id');
@@ -22,6 +25,7 @@ function VideoPage() {
   const youtubeVideoId = videoInfo?.videoId;
 
   useEffect(() => {
+    setTranscript([]);
     if (youtubeVideoId) {
       setLoading(true);
       setCurrentVideoData(null);
@@ -39,6 +43,8 @@ function VideoPage() {
       setLoading(false);
     }
   }, [youtubeVideoId]);
+
+  const videoTitle = currentVideoData?.snippet?.title || videoInfo?.title || '';
 
   return (
     <div className="flex h-screen bg-gray-100 dark:bg-gray-950">
@@ -73,6 +79,11 @@ function VideoPage() {
               <>
                 <VideoSection srcId={youtubeVideoId} />
                 <VideoDetails videoData={currentVideoData} loading={loading} />
+                <TranscriptPanel
+                  videoId={youtubeVideoId}
+                  onTranscriptLoaded={setTranscript}
+                />
+                <VideoQA transcript={transcript} videoTitle={videoTitle} />
               </>
             ) : (
               <CourseIntroduction courseName={courseName} />
